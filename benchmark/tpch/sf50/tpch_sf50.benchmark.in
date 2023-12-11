@@ -1,0 +1,17 @@
+# name: ${FILE_PATH}
+# description: ${DESCRIPTION}
+# group: [sf50]
+
+name Q${QUERY_NUMBER_PADDED}
+group tpch
+subgroup sf50
+
+require tpch
+
+cache tpch_sf50.duckdb
+
+load benchmark/tpch/sf50/load.sql
+
+run extension/tpch/dbgen/queries/q${QUERY_NUMBER_PADDED}.sql
+
+# result extension/tpch/dbgen/answers/sf50/q${QUERY_NUMBER_PADDED}.csv
